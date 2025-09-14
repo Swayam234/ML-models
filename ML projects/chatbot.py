@@ -3,9 +3,12 @@ import random
 import string
 from nltk.chat.util import Chat, reflections
 from nltk.corpus import wordnet
+
+# Download required NLTK data
 nltk.download('punkt')
 nltk.download('wordnet')
 
+# Define patterns (regex) and responses for the chatbot
 pairs = [
     [
         r"hi|hello|hey",
@@ -45,16 +48,19 @@ pairs = [
     ]
 ]
 
+# Create chatbot instance using predefined pairs and reflections
 chatbot = Chat(pairs, reflections)
 
+# Function to start chatbot interaction
 def start_chat():
     print("ChatBot: Hello!")
     while True:
-        user_input = input("You: ")
-        if user_input.lower() in ["bye", "quit", "exit"]:
+        user_input = input("You: ")  # Take user input
+        if user_input.lower() in ["bye", "quit", "exit"]:   # Exit condition
             print("ChatBot: Goodbye!")
             break
-        response = chatbot.respond(user_input)
+        response = chatbot.respond(user_input)      # Generate response
         print("ChatBot:", response)
-
+        
+# Run chatbot
 start_chat()
